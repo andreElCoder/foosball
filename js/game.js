@@ -7,21 +7,52 @@ class Game {
     this.field=new Field(this)
     this.playersTeam1=[];
     this.playersTeam2=[];
-    //this.ball = new Ball(this);
+    this.ball = new Ball(this);
     }
-displayTeams(){
-    for(let x=60;x<=this.width-60;x+=(this.game.width-120)/7){
-        switch(x){                                  // Representes the this.x of the player
-            case 60 : this.playersTeam1.push(new Player(x,this.height/2));break;                    //GK team1
-            case this.width-60 : this.playersTeam2.push(new Player(x,this.height/2));break;         //GK team2
-            case 60+(this.game.width-120)/7 :                                                       //DF team1
-                for(let y=60;y<=this.height-60;y+=(this.height-120)/2)
-                this.playersTeam1.push(new Player(x,y))
+createTeams(){
+    for(let x=60;x<=this.width-60;x+=(this.width-120)/7){
+        switch(x){// Representes the this.x of the player,begins at 60 because of the borders
+            case 60 :                                                                  //GK team1
+            this.playersTeam1.push(new Player(this,x,this.height/2))                   
                 break
-            case 60+2*(this.game.width-120)/7:                                                       //FW team2
-                for(let y=60;y<=this.height-60;y+=(this.height-120)/7)
-                this.playersTeam1.push(new Player(i,this.height/2))
+            case 60+(this.width-120)/7 :                                               //DF team1
+                for(let y=250;y<=this.height-250;y+=(this.height-500))
+                this.playersTeam1.push(new Player(this,x,y))
+                break
+            case 60+2*(this.width-120)/7:                                              //FW team2
+                for(let y=160;y<=this.height-160;y+=(this.height-320)/2)
+                this.playersTeam2.push(new Player(this,x,y))
+                break
+            case 60+3*(this.width-120)/7:                                              //MD team1
+                for(let y=120;y<=this.height-120;y+=(this.height-240)/4)
+                this.playersTeam1.push(new Player(this,x,y))
+                break
+            case 60+4*(this.width-120)/7:                                              //MD team2
+                for(let y=120;y<=this.height-120;y+=(this.height-240)/4)
+                this.playersTeam2.push(new Player(this,x,y))
+                break
+            case 60+5*(this.width-120)/7:                                              //FW team1
+                for(let y=160;y<=this.height-160;y+=(this.height-320)/2)
+                this.playersTeam1.push(new Player(this,x,y))
+                break
+            case 60+6*(this.width-120)/7:                                              //DF team2
+                for(let y=250;y<=this.height-250;y+=(this.height-500))
+                this.playersTeam2.push(new Player(this,x,y))
+                break
+            case this.width-60 :                                                       //GK team2
+                this.playersTeam2.push(new Player(this,x,this.height/2))
+                break        
         } 
 }
+}
+displayTeams(){
+    console.log(this.playersTeam1)
+    this.playersTeam1.forEach(player1=> {
+        console.log(player1)
+        player1.displayPlayer()
+    });
+    this.playersTeam2.forEach(player2=> {
+        player2.displayPlayer()
+    });
 }
 }

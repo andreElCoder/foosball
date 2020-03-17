@@ -11,6 +11,7 @@ displayPlayer(){
     this.ctx.beginPath()
     this.ctx.moveTo(this.x,this.y-12)
     this.ctx.lineTo(this.x,this.y+12)
+    this.ctx.strokeStyle = "rgb(226, 206, 150)"
     this.ctx.lineWidth = 6
     this.ctx.stroke()
     this.ctx.closePath()
@@ -20,6 +21,6 @@ displayPlayer(){
     this.ctx.arc(this.x,this.y, 4, 0, 2 * Math.PI)
     this.ctx.stroke()
     this.ctx.closePath()
-    this.ctx.restored()
+    this.ctx.restore()
 }
 }

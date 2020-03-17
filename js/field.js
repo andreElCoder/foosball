@@ -62,7 +62,7 @@ displayField(){
         this.ctx.strokeStyle = "rgb(161, 161, 161)"
         this.ctx.moveTo(i,20)
         this.ctx.lineTo(i,this.game.height-20)
-        this.ctx.lineWidth = 18
+        this.ctx.lineWidth = 14
         this.ctx.stroke()
         this.ctx.closePath()
 }
