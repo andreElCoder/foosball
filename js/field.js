@@ -33,26 +33,39 @@ displayField(){
     this.ctx.closePath()
     this.ctx.beginPath()
     
-    //Goal areas
+    //Goal areas left side
     this.ctx.fillStyle="white"
     this.ctx.strokeRect(40,this.game.height/4,this.game.width/8,this.game.height/2)
+      //Goal areas right side
     this.ctx.strokeRect(this.game.width-215,this.game.height/4,this.game.width/8,this.game.height/2)
-    //Goal
+    //Goal for left side
     this.ctx.beginPath()
     this.ctx.strokeStyle = "rgb(58, 40, 1)"
-    this.ctx.moveTo(this.game.width-39,225)
-    this.ctx.lineTo(this.game.width-39,this.game.height-225)
+    this.ctx.moveTo(this.game.width-39,235)
+    this.ctx.lineTo(this.game.width-39,this.game.height-235)
     this.ctx.lineWidth = 28
     this.ctx.stroke()
     this.ctx.closePath()
+     //Goal for right side
     this.ctx.beginPath()
     this.ctx.strokeStyle = "rgb(58, 40, 1)"
-    this.ctx.moveTo(39,225)
-    this.ctx.lineTo(39,this.game.height-225)
+    this.ctx.moveTo(39,235)
+    this.ctx.lineTo(39,this.game.height-235)
     this.ctx.lineWidth = 28
     this.ctx.stroke()
     this.ctx.closePath()
-
     this.ctx.restore()
+
+    //Player support
+    for(let i=60;i<=this.game.width-60;i+=(this.game.width-120)/7){
+        this.ctx.beginPath()
+        this.ctx.strokeStyle = "rgb(161, 161, 161)"
+        this.ctx.moveTo(i,20)
+        this.ctx.lineTo(i,this.game.height-20)
+        this.ctx.lineWidth = 18
+        this.ctx.stroke()
+        this.ctx.closePath()
+}
+this.ctx.restore()
 }
 }
