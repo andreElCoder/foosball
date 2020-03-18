@@ -21,6 +21,12 @@ throughBall(){
     this.x=game.width/2
     this.y=game.height-60
     this.speedX= Math.floor(Math.random()*2)-2
-    this.speedY= -5
+    this.speedY= -10
+}
+updateBall(){
+    console.log(this.y)
+    console.log(this.speedY)
+    this.x+=this.speedX;
+    this.y+=this.speedY;
 }
 }

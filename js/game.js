@@ -8,7 +8,16 @@ class Game {
     this.playersTeam1=[];
     this.playersTeam2=[];
     this.ball = new Ball(this);
+    this.animationId;
     }
+
+updateGame(){
+    this.animationId = window.requestAnimationFrame(() => {
+        this.displayTeams()
+        this.displayBall()
+        this.updateGame()
+    })
+}
 createTeams(){
     for(let x=60;x<=this.width-60;x+=(this.width-120)/7){
         switch(x){// Representes the this.x of the player,begins at 60 because of the borders
@@ -54,5 +63,9 @@ displayTeams(){
     this.playersTeam2.forEach(player2=> {
         player2.displayPlayer()
     });
+}
+displayBall(){
+    this.ball.updateBall();
+    this.ball.displayBall();
 }
 }
