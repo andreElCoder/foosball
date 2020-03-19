@@ -4,6 +4,8 @@ class Player{
         this.ctx = game.ctx
         this.x = x
         this.y = y
+        this.speedY = 0
+      
     }
 
 displayPlayer(){
@@ -23,4 +25,12 @@ displayPlayer(){
     this.ctx.closePath()
     this.ctx.restore()
 }
+moveUp() {
+        this.speedY = -2
+        this.y+=this.speedY
+      }
+moveDown() {
+        this.speedY = 2
+        this.y+=this.speedY
+      }
 }

@@ -20,8 +20,8 @@ displayBall(){
 throughBall(){
     this.x=game.width/2
     this.y=game.height-60
-    this.speedX= Math.floor(Math.random()*2)-2
-    this.speedY= -10
+    this.speedX= 2
+    this.speedY= -3 
 }
 updateBall(){
     console.log(this.y)
@@ -29,4 +29,9 @@ updateBall(){
     this.x+=this.speedX;
     this.y+=this.speedY;
 }
+checkBallOnBoundaries(){
+    if(this.x<60 || this.x > this.game.width-60) this.speedX=-this.speedX
+    else if(this.y<60 || this.y > this.game.height-60) this.speedY=-this.speedY
+}
+
 }
