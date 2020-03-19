@@ -24,8 +24,6 @@ throughBall(){
     this.speedY= -3 
 }
 updateBall(){
-    console.log(this.y)
-    console.log(this.speedY)
     this.x+=this.speedX;
     this.y+=this.speedY;
 }

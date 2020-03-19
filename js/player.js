@@ -26,11 +26,15 @@ displayPlayer(){
     this.ctx.restore()
 }
 moveUp() {
-        this.speedY = -2
-        this.y+=this.speedY
-      }
+    this.speedY = -4
+}
 moveDown() {
-        this.speedY = 2
-        this.y+=this.speedY
-      }
+    this.speedY = 4
+}
+notMoving() {
+    this.speedY = 0
+}
+updatePlayer(){
+    this.y+=this.speedY;
+}
 }

@@ -13,8 +13,11 @@ class Game {
 
 updateGame(){
     this.animationId = window.requestAnimationFrame(() => {
-        this.movePlayers()
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        this.field.displayField();
+
         this.displayTeams()
+        this.movePlayers()
         this.displayBall()
         this.updateGame()
     })
@@ -58,9 +61,14 @@ createTeams(){
 displayTeams(){
     this.playersTeam1.forEach(player1=> {
         player1.displayPlayer()
+        player1.updatePlayer()
+        player1.notMoving()
     });
     this.playersTeam2.forEach(player2=> {
         player2.displayPlayer()
+        player2.updatePlayer()
+        player2.notMoving()
+        
     });
 }
 displayBall(){
@@ -69,16 +77,17 @@ displayBall(){
     this.ball.displayBall();
 }
 movePlayers(){
-
+    
     window.addEventListener("keydown", event => { 
-        //GK -Team1 UP=Q Down= A
-        if (event.keyCode === 81) {
-            console.log(this.playersTeam1)
+        //GK -Team1 UP=Q Down= At
+        if (event.keyCode === 81) {//&& this.playersTeam1[0].y>235
             this.playersTeam1[0].moveUp()
         }
-        if (event.keyCode === 65) {
+        if (event.keyCode === 65)  { //&&  this.playersTeam1[0].y<this.height-235
             this.playersTeam1[0].moveDown()
         }
+    })
+    window.addEventListener("keydown", event => { 
         //GK -Team2 UP=O Down= L
         if (event.keyCode === 79) {
             this.playersTeam2[10].moveUp()
@@ -86,6 +95,8 @@ movePlayers(){
         if (event.keyCode === 76) {
             this.playersTeam2[10].moveDown()
         }
+    })
+    window.addEventListener("keydown", event => { 
         //DF -Team1 UP=W Down= S
         if (event.keyCode === 87) {
             this.playersTeam1[1].moveUp()
@@ -96,6 +107,8 @@ movePlayers(){
             this.playersTeam1[1].moveDown()
             this.playersTeam1[2].moveDown()
         }
+    })
+        window.addEventListener("keydown", event => { 
         //DF -Team2 UP=I Down= K
         if (event.keyCode === 73) {
             this.playersTeam2[9].moveUp()
@@ -105,6 +118,7 @@ movePlayers(){
             this.playersTeam2[9].moveDown()
             this.playersTeam2[8].moveDown()
         }
+        window.addEventListener("keydown", event => { 
         //MID -Team1 UP=E Down= D
         if (event.keyCode === 69) {
             this.playersTeam1[3].moveUp()
@@ -120,6 +134,8 @@ movePlayers(){
             this.playersTeam1[6].moveDown()
             this.playersTeam1[7].moveDown()
         }
+    })
+        window.addEventListener("keydown", event => { 
         //MID -Team2 UP=U Down= J
         if (event.keyCode === 85) {
             this.playersTeam2[7].moveUp()
@@ -135,7 +151,8 @@ movePlayers(){
             this.playersTeam2[4].moveDown()
             this.playersTeam2[3].moveDown()
         }
-
+    })
+        window.addEventListener("keydown", event => { 
         //FW -Team1 UP=R Down=F
         if (event.keyCode === 82) {
             this.playersTeam1[8].moveUp()
@@ -147,6 +164,8 @@ movePlayers(){
             this.playersTeam1[9].moveDown()
             this.playersTeam1[10].moveDown()
         }
+})
+        window.addEventListener("keydown", event => { 
         //FW -Team2 UP=Y Down=H
         if (event.keyCode === 89) {
             this.playersTeam2[2].moveUp()
