@@ -9,6 +9,7 @@ class Game {
     this.playersTeam2=[];
     this.ball = new Ball(this);
     this.animationId;
+    this.pressedKeys= {}
     }
 
 updateGame(){
@@ -77,6 +78,17 @@ displayBall(){
     this.ball.displayBall();
 }
 movePlayers(){
+    window.addEventListener("keydown", event => { 
+        this.pressedKeys[e.keyCode] = e.type == 'keydown';
+        // You could also use an array
+    /* insert conditional here */
+    }
+    
+    )
+    console.log(this.pressedKeys)
+}
+
+/*movePlayers(){
     
     window.addEventListener("keydown", event => { 
         //GK -Team1 UP=Q Down= At
@@ -118,6 +130,7 @@ movePlayers(){
             this.playersTeam2[9].moveDown()
             this.playersTeam2[8].moveDown()
         }
+    })
         window.addEventListener("keydown", event => { 
         //MID -Team1 UP=E Down= D
         if (event.keyCode === 69) {
@@ -180,5 +193,5 @@ movePlayers(){
 
     });
 }
-
+*/
 }
