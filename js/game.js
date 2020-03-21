@@ -1,5 +1,5 @@
 class Game {
-    constructor(canvas,score){
+    constructor(canvas){
     this.$canvas=canvas
     this.ctx = this.$canvas.getContext("2d");
     this.width = this.$canvas.width;
@@ -8,15 +8,12 @@ class Game {
     this.playersTeam1=[];
     this.playersTeam2=[];
     this.ball = new Ball(this)
-    this.$score = score
+    this.$score = new Score(this);
     this.animationId;
     this.keysPressed();
     this.pressedKeys= {}    
     }
-updateScore(){
-    let team1 = score.getElementsByTagName("td")[0].innerText = ""
-    let team2 = score.getElementsByTagName("td")[1].innerText = ""
-}
+
 updateGame(){
     this.animationId = window.requestAnimationFrame(() => {
         this.ctx.clearRect(0, 0, this.width, this.height);
@@ -75,10 +72,9 @@ displayTeams(){
     });
 }
 displayBall(){
-    this.ball.checkBallOnBoundaries();
-    //this.ball.checkGoal()
-    this.ball.updateBall();
-    this.ball.displayBall();
+    this.ball.checkBallOnBoundaries()
+    this.ball.updateBall()
+    this.ball.displayBall()
 }
 keysPressed(){
     window.addEventListener("keydown", event => {
