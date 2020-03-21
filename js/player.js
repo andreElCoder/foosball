@@ -37,4 +37,5 @@ notMoving() {
 updatePlayer(){
     this.y+=this.speedY;
 }
+
 }
