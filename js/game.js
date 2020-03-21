@@ -71,6 +71,7 @@ displayTeams(){
 }
 displayBall(){
     this.ball.checkBallOnBoundaries();
+    //this.ball.checkGoal()
     this.ball.updateBall();
     this.ball.displayBall();
 }

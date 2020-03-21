@@ -37,19 +37,6 @@ notMoving() {
 updatePlayer(){
     this.y+=this.speedY;
 }
-keysPressed(){
-    window.addEventListener("keydown", event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
-        this.pressedKeys[event.keyCode] = event.type == 'keydown'
-        // You could also use an array
-    /* insert conditional here */
-    })
-    window.addEventListener('keyup', event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
-        this.pressedKeys[event.keyCode] = false;
-    })
 
-    //console.log(this.pressedKeys)
-}
 
 }
