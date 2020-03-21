@@ -9,15 +9,14 @@ class Game {
     this.playersTeam2=[];
     this.ball = new Ball(this);
     this.animationId;
-    this.pressedKeys= {}
+    this.keysPressed();
+    this.pressedKeys= {}    
     }
-
 updateGame(){
     this.animationId = window.requestAnimationFrame(() => {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.field.displayField();
         this.displayTeams()
-        this.keysPressed()
         this.movePlayers()
         this.displayBall()
         this.updateGame()
@@ -87,36 +86,36 @@ keysPressed(){
         this.pressedKeys[event.keyCode] = false;
     })
 
-    console.log(this.pressedKeys)
+    //console.log(this.pressedKeys)
 }
 
 movePlayers(){
     
         //GK -Team1 UP=Q Down= At
-        if (this.pressedKeys[81]) {//&& this.playersTeam1[0].y>235
+        if (this.pressedKeys[81] && this.playersTeam1[0].y>235) {
             this.playersTeam1[0].moveUp()
         }
-        else if (this.pressedKeys[65])  { //&&  this.playersTeam1[0].y<this.height-235
+        else if (this.pressedKeys[65] && this.playersTeam1[0].y<this.height-235) {  
             this.playersTeam1[0].moveDown()
         }
         else{this.playersTeam1[0].notMoving()}
 
         //GK -Team2 UP=O Down= L
-        if (this.pressedKeys[79]) {
+        if (this.pressedKeys[79] && this.playersTeam2[10].y>235) {
             this.playersTeam2[10].moveUp()
         }
-        else if (this.pressedKeys[76]) {
+        else if (this.pressedKeys[76] && this.playersTeam2[10].y<this.height-235)  {
             this.playersTeam2[10].moveDown()
         } 
         else{this.playersTeam2[10].notMoving()
         }
 
         //DF -Team1 UP=W Down= S
-        if (this.pressedKeys[87]) {
+        if (this.pressedKeys[87] && this.playersTeam1[1].y>50) {
             this.playersTeam1[1].moveUp()
             this.playersTeam1[2].moveUp()
         }
-        else if (this.pressedKeys[83]) {
+        else if (this.pressedKeys[83] && this.playersTeam1[2].y<this.height-50) {
             this.playersTeam1[1].moveDown()
             this.playersTeam1[2].moveDown()
         }    
@@ -124,11 +123,11 @@ movePlayers(){
             this.playersTeam1[2].notMoving()
         }
         //DF -Team2 UP=I Down= K
-        if (this.pressedKeys[73]) {
+        if (this.pressedKeys[73] && this.playersTeam2[8].y>50) {
             this.playersTeam2[9].moveUp()
             this.playersTeam2[8].moveUp()
         }
-        else if (this.pressedKeys[75]) {
+        else if (this.pressedKeys[75] && this.playersTeam2[9].y<this.height-50) {
             this.playersTeam2[9].moveDown()
             this.playersTeam2[8].moveDown()
         }
@@ -136,14 +135,14 @@ movePlayers(){
             this.playersTeam2[8].notMoving()
         }   
         //MID -Team1 UP=E Down= D
-        if (this.pressedKeys[69]) {
+        if (this.pressedKeys[69] && this.playersTeam1[3].y>50) {
             this.playersTeam1[3].moveUp()
             this.playersTeam1[4].moveUp()
             this.playersTeam1[5].moveUp()
             this.playersTeam1[6].moveUp()
             this.playersTeam1[7].moveUp()
         }
-        else if (this.pressedKeys[68]) {
+        else if (this.pressedKeys[68] && this.playersTeam1[7].y<this.height-50) {
             this.playersTeam1[3].moveDown()
             this.playersTeam1[4].moveDown()
             this.playersTeam1[5].moveDown()
@@ -157,14 +156,14 @@ movePlayers(){
             this.playersTeam1[7].notMoving()
         }
         //MID -Team2 UP=U Down= J
-        if (this.pressedKeys[85]) {
+        if (this.pressedKeys[85] && this.playersTeam2[3].y>50) {
             this.playersTeam2[7].moveUp()
             this.playersTeam2[6].moveUp()
             this.playersTeam2[5].moveUp()
             this.playersTeam2[4].moveUp()
             this.playersTeam2[3].moveUp()
         }
-        else if (this.pressedKeys[74]) {
+        else if (this.pressedKeys[74] && this.playersTeam2[7].y<this.height-50) {
             this.playersTeam2[7].moveDown()
             this.playersTeam2[6].moveDown()
             this.playersTeam2[5].moveDown()
@@ -178,12 +177,12 @@ movePlayers(){
             this.playersTeam2[3].notMoving()
         }
         //FW -Team1 UP=R Down=F
-        if (this.pressedKeys[82]) {
+        if (this.pressedKeys[82] && this.playersTeam1[8].y>50) {
             this.playersTeam1[8].moveUp()
             this.playersTeam1[9].moveUp()
             this.playersTeam1[10].moveUp()
         }
-        else if (this.pressedKeys[70]) {
+        else if (this.pressedKeys[70] && this.playersTeam1[10].y<this.height-50) {
             this.playersTeam1[8].moveDown()
             this.playersTeam1[9].moveDown()
             this.playersTeam1[10].moveDown()
@@ -193,12 +192,12 @@ movePlayers(){
             this.playersTeam1[10].notMoving()
         }
         //FW -Team2 UP=Y Down=H
-        if (this.pressedKeys[89]) {
+        if (this.pressedKeys[89] && this.playersTeam2[0].y>50) {
             this.playersTeam2[2].moveUp()
             this.playersTeam2[1].moveUp()
             this.playersTeam2[0].moveUp()
         }
-        else if (this.pressedKeys[72]) {
+        else if (this.pressedKeys[72] && this.playersTeam2[2].y<this.height-50) {
             this.playersTeam2[2].moveDown()
             this.playersTeam2[1].moveDown()
             this.playersTeam2[0].moveDown()
