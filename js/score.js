@@ -7,10 +7,13 @@ class Score {
     }
 
 updateScore(){
-    console.log(this)
-    $score[0].innerText = `${this.team1}`
-    $score[1].innerText = `${this.team2}`
+    this.$score[0].innerHTML = `${this.team1}`
+    this.$score[1].innerText = `${this.team2}`
 }
-goalTeam1(){this.team1++}
-goalTeam2(){this.team2++}
+goalTeam1(){
+    this.team1++
+}
+goalTeam2(){
+    this.team2++
+}
 }

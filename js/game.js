@@ -8,7 +8,7 @@ class Game {
     this.playersTeam1=[];
     this.playersTeam2=[];
     this.ball = new Ball(this)
-    this.$score = new Score(this);
+    this.score = new Score(this);
     this.animationId;
     this.keysPressed();
     this.pressedKeys= {}    
@@ -209,4 +209,5 @@ movePlayers(){
             this.playersTeam2[0].notMoving()
         }
 }
+
 }

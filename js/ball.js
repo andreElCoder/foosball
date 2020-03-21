@@ -20,7 +20,7 @@ displayBall(){
 throughBall(){
     this.x=game.width/2
     this.y=game.height-60
-    this.speedX= 6
+    this.speedX= 5
     this.speedY= -20     
 }
 updateBall(){
@@ -30,15 +30,16 @@ updateBall(){
 checkBallOnBoundaries(){
     if(this.x<60 && this.y>235 && this.y<this.game.height-235){
         this.throughBall();
-        this.game.score.goalTeam1()                                                  //Goal area 1
+        this.game.score.goalTeam1()
+        this.game.score.updateScore()                                                      //Goal area 1
     }
     else if(this.x > this.game.width-60 && this.y>235 && this.y<this.game.height-235){
         this.throughBall();
         this.game.score.goalTeam2()                                                        //Goal area 2
+        this.game.score.updateScore()
     }
     else if(this.x<60 || this.x > this.game.width-60) this.speedX=-this.speedX
     else if(this.y<60 || this.y > this.game.height-60) this.speedY=-this.speedY
-
     
 }
 
