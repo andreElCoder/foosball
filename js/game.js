@@ -1,5 +1,5 @@
 class Game {
-    constructor(canvas){
+    constructor(canvas,score){
     this.$canvas=canvas
     this.ctx = this.$canvas.getContext("2d");
     this.width = this.$canvas.width;
@@ -7,11 +7,16 @@ class Game {
     this.field=new Field(this)
     this.playersTeam1=[];
     this.playersTeam2=[];
-    this.ball = new Ball(this);
+    this.ball = new Ball(this)
+    this.$score = score
     this.animationId;
     this.keysPressed();
     this.pressedKeys= {}    
     }
+updateScore(){
+    let team1 = score.getElementsByTagName("td")[0].innerText = ""
+    let team2 = score.getElementsByTagName("td")[1].innerText = ""
+}
 updateGame(){
     this.animationId = window.requestAnimationFrame(() => {
         this.ctx.clearRect(0, 0, this.width, this.height);

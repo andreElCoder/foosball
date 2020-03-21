@@ -5,7 +5,6 @@ class Player{
         this.x = x
         this.y = y
         this.speedY = 0
-      
     }
 
 displayPlayer(){

@@ -1,6 +1,8 @@
 
 let $canvas= document.querySelector("canvas");
-let game = new Game($canvas);
+let $score = document.querySelector("#score")
+console.log($score) 
+let game = new Game($canvas,$score);
 game.createTeams();
 game.ball.throughBall();
 game.keysPressed();
