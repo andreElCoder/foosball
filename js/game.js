@@ -64,31 +64,44 @@ displayTeams(){
     this.playersTeam1.forEach(player1=> {
         player1.displayPlayer()
         player1.updatePlayer()
+        player1.checkTouchBall(this.ball)
     });
     this.playersTeam2.forEach(player2=> {
         player2.displayPlayer()
         player2.updatePlayer()
-                
+        player2.checkTouchBall(this.ball)     
     });
 }
 displayBall(){
-    this.ball.checkBallOnBoundaries()
+    this.checkBallOnBoundaries()
     this.ball.updateBall()
     this.ball.displayBall()
+}
+
+checkBallOnBoundaries(){
+    if(this.ball.x<60 && this.ball.y>235 && this.ball.y<this.height-235){               //Goal area 1
+        this.ball.throughBall();
+        this.score.goalTeam1()
+        this.score.updateScore()                                                      
+    }
+    else if(this.ball.x> this.width-60 && this.ball.y>235 && this.ball.y<this.height-235){  //Goal area 2
+        this.ball.throughBall();
+        this.score.goalTeam2()                                                        
+        this.score.updateScore()
+    }
+    else if(this.ball.x<60 || this.ball.x > this.width-60) this.ball.speedX=-this.ball.speedX
+    else if(this.ball.y<60 || this.ball.y > this.height-60) this.ball.speedY=-this.ball.speedY
+    
 }
 keysPressed(){
     window.addEventListener("keydown", event => {
         if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
         this.pressedKeys[event.keyCode] = event.type == 'keydown'
-        // You could also use an array
-    /* insert conditional here */
     })
     window.addEventListener('keyup', event => {
         if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
         this.pressedKeys[event.keyCode] = false;
     })
-
-    //console.log(this.pressedKeys)
 }
 
 movePlayers(){
@@ -209,5 +222,4 @@ movePlayers(){
             this.playersTeam2[0].notMoving()
         }
 }
-
 }

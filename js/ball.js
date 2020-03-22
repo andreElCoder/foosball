@@ -18,29 +18,14 @@ displayBall(){
     this.ctx.restore()
 }
 throughBall(){
-    this.x=game.width/2
-    this.y=game.height-60
-    this.speedX= 5
-    this.speedY= -20     
+    this.x= 90+game.width/2 
+    this.y= +game.height/2  //game.height-60
+    this.speedX= 0
+    this.speedY= 5     
 }
 updateBall(){
     this.x+=this.speedX;
     this.y+=this.speedY;
-}
-checkBallOnBoundaries(){
-    if(this.x<60 && this.y>235 && this.y<this.game.height-235){
-        this.throughBall();
-        this.game.score.goalTeam1()
-        this.game.score.updateScore()                                                      //Goal area 1
-    }
-    else if(this.x > this.game.width-60 && this.y>235 && this.y<this.game.height-235){
-        this.throughBall();
-        this.game.score.goalTeam2()                                                        //Goal area 2
-        this.game.score.updateScore()
-    }
-    else if(this.x<60 || this.x > this.game.width-60) this.speedX=-this.speedX
-    else if(this.y<60 || this.y > this.game.height-60) this.speedY=-this.speedY
-    
 }
 
 }
