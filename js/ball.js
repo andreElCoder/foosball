@@ -18,10 +18,10 @@ displayBall(){
     this.ctx.restore()
 }
 throughBall(){
-    this.x= 90+game.width/2 
-    this.y= +game.height/2  //game.height-60
+    this.x= 92+game.width/2 
+    this.y= 250
     this.speedX= 0
-    this.speedY= 5     
+    this.speedY= 5 
 }
 updateBall(){
     this.x+=this.speedX;

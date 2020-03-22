@@ -36,21 +36,22 @@ notMoving() {
 updatePlayer(){
     this.y+=this.speedY;
 }
-checkTouchBall(ball){ //Ball radius is 5
-
-    if(ball.x-2 <= this.x-5 && ball.x+2 > this.x-5 && ball.y >this.y-5 && ball.y<this.y+5){// Ball touch left side of player
+checkTouchBall(ball){ 
+//Ball radius is 5 ( also added as tolerance/interval or this condition eg: ball.x===this-x almost never happen)
+//  <ball.x<
+    if(ball.x+5 < this.x-5 && ball.x+15>this.x-5 && ball.y >this.y-10 && ball.y<this.y+10){// Ball touch left side of player
         console.log("Ball touch left side of player")
         ball.speedX=-ball.speedX
     }  
-    if(ball.x-2 <= this.x+5 && ball.x+2 > this.x+5 && ball.y >this.y-5 && ball.y<this.y+5){ // Ball touch rigth side of player
+    if(ball.x-10 < this.x+5 && ball.x>this.x+5  &&  ball.y >this.y-10 && ball.y<this.y+10){ // Ball touch rigth side of player
         console.log("Ball touch right side of player")
         ball.speedX=-ball.speedX
     }
-    if(ball.x-2 >= this.y-5 && ball.x+2 < this.y-5 && ball.x >this.x-5 && ball.y<this.x+5){ // Ball touch upper side of player
+    if(ball.y+5 < this.y-5 && ball.y+15 > this.y-5 && ball.x >this.x-10 && ball.x<this.x+10){ // Ball touch upper side of player
         console.log("Ball touch upper side of player")
-        ball.speedY=-ball.speedX
+        ball.speedY=-ball.speedY
     }
-    if(ball.x-2 >= this.y-5 && ball.x+2 < this.y+5 && ball.x >this.x-5 && ball.y<this.x+5){ // Ball touch bottom side of player
+    if(ball.y-10 < this.y+5 && ball.y>this.y+5  &&  ball.x >this.x-10 && ball.x<this.x+10){ // Ball touch bottom side of player
         console.log("Ball touch bottom side of player")
         ball.speedY=-ball.speedY
     }

@@ -19,8 +19,8 @@ updateGame(){
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.field.displayField();
         this.displayTeams()
-        this.movePlayers()
         this.displayBall()
+        this.movePlayers()
         this.updateGame()
     })
 }
