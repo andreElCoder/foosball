@@ -10,8 +10,8 @@ class Game {
     this.ball = new Ball(this)
     this.score = new Score(this);
     this.animationId;
-    this.keysPressed();
-    this.pressedKeys= {}    
+    this.pressedKeys= {}   
+    this.keysPressed();   
     }
 
 updateGame(){
@@ -62,12 +62,16 @@ createTeams(){
 }
 displayTeams(){
     this.playersTeam1.forEach(player1=> {
+        if(!player1.shoot) 
         player1.displayPlayer()
+        else{player1.displayHorizontallyLeft()} 
         player1.updatePlayer()
         player1.checkTouchBall(this.ball)
     });
     this.playersTeam2.forEach(player2=> {
+        if(!player2.shoot)
         player2.displayPlayer()
+        else{player2.displayHorizontallyRight()} 
         player2.updatePlayer()
         player2.checkTouchBall(this.ball)     
     });
@@ -94,18 +98,29 @@ checkBallOnBoundaries(){
     
 }
 keysPressed(){
+    
     window.addEventListener("keydown", event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
-        this.pressedKeys[event.keyCode] = event.type == 'keydown'
+        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 ){
+            this.pressedKeys[event.keyCode] = true
+        }
+       
     })
     window.addEventListener('keyup', event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 )
-        this.pressedKeys[event.keyCode] = false;
+        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 ){
+            this.pressedKeys[event.keyCode] = false
+        }
     })
 }
 
 movePlayers(){
-    
+    console.log(this.pressedKeys)
+        if(this.pressedKeys[90]){
+            console.log(this.playersTeam1[0])
+            this.playersTeam1[0].shootOn()
+        }
+        else{
+            this.playersTeam1[0].shootOff()
+        }
         //GK -Team1 UP=Q Down= At
         if (this.pressedKeys[81] && this.playersTeam1[0].y>235) {
             this.playersTeam1[0].moveUp()

@@ -18,9 +18,9 @@ displayBall(){
     this.ctx.restore()
 }
 throughBall(){
-    this.x= 92+game.width/2 
+    this.x= 90+game.width/2 
     this.y= 250
-    this.speedX= 0
+    this.speedX= 2
     this.speedY= 5 
 }
 updateBall(){
