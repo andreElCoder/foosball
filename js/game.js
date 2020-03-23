@@ -20,7 +20,7 @@ updateGame(){
         this.field.displayField();
         this.displayTeams()
         this.displayBall()
-        this.movePlayers()
+        //this.movePlayers()
         this.updateGame()
     })
 }
@@ -100,28 +100,28 @@ checkBallOnBoundaries(){
 keysPressed(){
     
     window.addEventListener("keydown", event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 ){
+        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 || event.keyCode === 88|| event.keyCode === 67|| event.keyCode === 86 || event.keyCode === 190 || event.keyCode === 188|| event.keyCode === 77|| event.keyCode === 78){
             this.pressedKeys[event.keyCode] = true
+           this.movePlayers()
         }
-       
     })
     window.addEventListener('keyup', event => {
-        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 ){
+        if(event.keyCode ===81 ||event.keyCode === 65||event.keyCode === 79||event.keyCode === 76||event.keyCode === 87||event.keyCode === 83||event.keyCode === 73||event.keyCode === 75||event.keyCode === 69||event.keyCode === 68||event.keyCode === 85||event.keyCode ===  74||event.keyCode === 82||event.keyCode === 70||event.keyCode === 89||event.keyCode === 72 || event.keyCode === 90 || event.keyCode === 88|| event.keyCode === 67|| event.keyCode === 86 || event.keyCode === 190 || event.keyCode === 188|| event.keyCode === 77|| event.keyCode === 78){
             this.pressedKeys[event.keyCode] = false
+            this.movePlayers()
         }
     })
 }
 
 movePlayers(){
-    console.log(this.pressedKeys)
+
+        //GK -Team1 UP=Q Down=A Shot=Z
         if(this.pressedKeys[90]){
-            console.log(this.playersTeam1[0])
             this.playersTeam1[0].shootOn()
         }
         else{
             this.playersTeam1[0].shootOff()
         }
-        //GK -Team1 UP=Q Down= At
         if (this.pressedKeys[81] && this.playersTeam1[0].y>235) {
             this.playersTeam1[0].moveUp()
         }
@@ -130,7 +130,13 @@ movePlayers(){
         }
         else{this.playersTeam1[0].notMoving()}
 
-        //GK -Team2 UP=O Down= L
+        //GK -Team2 UP=O Down= L Shot=.
+        if(this.pressedKeys[190]){
+            this.playersTeam2[10].shootOn()
+        }
+        else{
+            this.playersTeam2[10].shootOff()
+        }
         if (this.pressedKeys[79] && this.playersTeam2[10].y>235) {
             this.playersTeam2[10].moveUp()
         }
@@ -140,7 +146,15 @@ movePlayers(){
         else{this.playersTeam2[10].notMoving()
         }
 
-        //DF -Team1 UP=W Down= S
+        //DF -Team1 UP=W Down= S Shot=X
+        if(this.pressedKeys[88]){
+            this.playersTeam1[1].shootOn()
+            this.playersTeam1[2].shootOn()
+        }
+        else{
+            this.playersTeam1[1].shootOff()
+            this.playersTeam1[2].shootOff()
+        }
         if (this.pressedKeys[87] && this.playersTeam1[1].y>50) {
             this.playersTeam1[1].moveUp()
             this.playersTeam1[2].moveUp()
@@ -153,6 +167,14 @@ movePlayers(){
             this.playersTeam1[2].notMoving()
         }
         //DF -Team2 UP=I Down= K
+        if(this.pressedKeys[188]){
+            this.playersTeam2[9].shootOn()
+            this.playersTeam2[8].shootOn()
+        }
+        else{
+            this.playersTeam2[9].shootOff()
+            this.playersTeam2[8].shootOff()
+        }
         if (this.pressedKeys[73] && this.playersTeam2[8].y>50) {
             this.playersTeam2[9].moveUp()
             this.playersTeam2[8].moveUp()
@@ -165,6 +187,22 @@ movePlayers(){
             this.playersTeam2[8].notMoving()
         }   
         //MID -Team1 UP=E Down= D
+        if(this.pressedKeys[67]){
+            this.playersTeam1[3].shootOn()
+            this.playersTeam1[4].shootOn()
+            this.playersTeam1[5].shootOn()
+            this.playersTeam1[6].shootOn()
+            this.playersTeam1[7].shootOn()
+
+        }
+        else{
+            this.playersTeam1[3].shootOff()
+            this.playersTeam1[4].shootOff()
+            this.playersTeam1[5].shootOff()
+            this.playersTeam1[6].shootOff()
+            this.playersTeam1[7].shootOff()
+            
+        }
         if (this.pressedKeys[69] && this.playersTeam1[3].y>50) {
             this.playersTeam1[3].moveUp()
             this.playersTeam1[4].moveUp()
@@ -186,6 +224,22 @@ movePlayers(){
             this.playersTeam1[7].notMoving()
         }
         //MID -Team2 UP=U Down= J
+        if(this.pressedKeys[77]){
+            this.playersTeam2[7].shootOn()
+            this.playersTeam2[6].shootOn()
+            this.playersTeam2[5].shootOn()
+            this.playersTeam2[4].shootOn()
+            this.playersTeam2[3].shootOn()
+
+        }
+        else{
+            this.playersTeam2[7].shootOff()
+            this.playersTeam2[6].shootOff()
+            this.playersTeam2[5].shootOff()
+            this.playersTeam2[4].shootOff()
+            this.playersTeam2[3].shootOff()
+            
+        }
         if (this.pressedKeys[85] && this.playersTeam2[3].y>50) {
             this.playersTeam2[7].moveUp()
             this.playersTeam2[6].moveUp()
@@ -207,6 +261,16 @@ movePlayers(){
             this.playersTeam2[3].notMoving()
         }
         //FW -Team1 UP=R Down=F
+        if(this.pressedKeys[86]){
+            this.playersTeam1[8].shootOn()
+            this.playersTeam1[9].shootOn()
+            this.playersTeam1[10].shootOn()
+        }
+        else{
+            this.playersTeam1[8].shootOff()
+            this.playersTeam1[9].shootOff()
+            this.playersTeam1[10].shootOff()
+        }
         if (this.pressedKeys[82] && this.playersTeam1[8].y>50) {
             this.playersTeam1[8].moveUp()
             this.playersTeam1[9].moveUp()
@@ -222,6 +286,16 @@ movePlayers(){
             this.playersTeam1[10].notMoving()
         }
         //FW -Team2 UP=Y Down=H
+        if(this.pressedKeys[78]){
+            this.playersTeam2[2].shootOn()
+            this.playersTeam2[1].shootOn()
+            this.playersTeam2[0].shootOn()
+        }
+        else{
+            this.playersTeam2[2].shootOff()
+            this.playersTeam2[1].shootOff()
+            this.playersTeam2[0].shootOff()
+        }
         if (this.pressedKeys[89] && this.playersTeam2[0].y>50) {
             this.playersTeam2[2].moveUp()
             this.playersTeam2[1].moveUp()
@@ -237,4 +311,331 @@ movePlayers(){
             this.playersTeam2[0].notMoving()
         }
 }
+
+playerKeyDownLogic(){
+
+    //GK -Team1 UP=Q Down=A Shot=Z
+    if(this.pressedKeys[90]){
+        this.playersTeam1[0].shootOn()
+    }
+    
+    if (this.pressedKeys[81] && this.playersTeam1[0].y>235) {
+        this.playersTeam1[0].moveUp()
+    }
+    else if (this.pressedKeys[65] && this.playersTeam1[0].y<this.height-235) {  
+        this.playersTeam1[0].moveDown()
+    }
+    //GK -Team2 UP=O Down= L Shot=.
+    if(this.pressedKeys[190]){
+        this.playersTeam2[10].shootOn()
+    }
+    
+    if (this.pressedKeys[79] && this.playersTeam2[10].y>235) {
+        this.playersTeam2[10].moveUp()
+    }
+    else if (this.pressedKeys[76] && this.playersTeam2[10].y<this.height-235)  {
+        this.playersTeam2[10].moveDown()
+    } 
+    //DF -Team1 UP=W Down= S Shot=X
+    if(this.pressedKeys[88]){
+        this.playersTeam1[1].shootOn()
+        this.playersTeam1[2].shootOn()
+    }
+    if (this.pressedKeys[87] && this.playersTeam1[1].y>50) {
+        this.playersTeam1[1].moveUp()
+        this.playersTeam1[2].moveUp()
+    }
+    else if (this.pressedKeys[83] && this.playersTeam1[2].y<this.height-50) {
+        this.playersTeam1[1].moveDown()
+        this.playersTeam1[2].moveDown()
+    }    
+    //DF -Team2 UP=I Down= K
+    if(this.pressedKeys[188]){
+        this.playersTeam2[9].shootOn()
+        this.playersTeam2[8].shootOn()
+    }
+    if (this.pressedKeys[73] && this.playersTeam2[8].y>50) {
+        this.playersTeam2[9].moveUp()
+        this.playersTeam2[8].moveUp()
+    }
+    else if (this.pressedKeys[75] && this.playersTeam2[9].y<this.height-50) {
+        this.playersTeam2[9].moveDown()
+        this.playersTeam2[8].moveDown()
+    }
+
+    //MID -Team1 UP=E Down= D
+    if(this.pressedKeys[67]){
+        this.playersTeam1[3].shootOn()
+        this.playersTeam1[4].shootOn()
+        this.playersTeam1[5].shootOn()
+        this.playersTeam1[6].shootOn()
+        this.playersTeam1[7].shootOn()
+
+    }
+    if (this.pressedKeys[69] && this.playersTeam1[3].y>50) {
+        this.playersTeam1[3].moveUp()
+        this.playersTeam1[4].moveUp()
+        this.playersTeam1[5].moveUp()
+        this.playersTeam1[6].moveUp()
+        this.playersTeam1[7].moveUp()
+    }
+    else if (this.pressedKeys[68] && this.playersTeam1[7].y<this.height-50) {
+        this.playersTeam1[3].moveDown()
+        this.playersTeam1[4].moveDown()
+        this.playersTeam1[5].moveDown()
+        this.playersTeam1[6].moveDown()
+        this.playersTeam1[7].moveDown()
+    }
+
+    //MID -Team2 UP=U Down= J
+    if(this.pressedKeys[77]){
+        this.playersTeam2[7].shootOn()
+        this.playersTeam2[6].shootOn()
+        this.playersTeam2[5].shootOn()
+        this.playersTeam2[4].shootOn()
+        this.playersTeam2[3].shootOn()
+
+    }
+    if (this.pressedKeys[85] && this.playersTeam2[3].y>50) {
+        this.playersTeam2[7].moveUp()
+        this.playersTeam2[6].moveUp()
+        this.playersTeam2[5].moveUp()
+        this.playersTeam2[4].moveUp()
+        this.playersTeam2[3].moveUp()
+    }
+    else if (this.pressedKeys[74] && this.playersTeam2[7].y<this.height-50) {
+        this.playersTeam2[7].moveDown()
+        this.playersTeam2[6].moveDown()
+        this.playersTeam2[5].moveDown()
+        this.playersTeam2[4].moveDown()
+        this.playersTeam2[3].moveDown()
+    }
+
+    //FW -Team1 UP=R Down=F
+    if(this.pressedKeys[86]){
+        this.playersTeam1[8].shootOn()
+        this.playersTeam1[9].shootOn()
+        this.playersTeam1[10].shootOn()
+    }
+    if (this.pressedKeys[82] && this.playersTeam1[8].y>50) {
+        this.playersTeam1[8].moveUp()
+        this.playersTeam1[9].moveUp()
+        this.playersTeam1[10].moveUp()
+    }
+    else if (this.pressedKeys[70] && this.playersTeam1[10].y<this.height-50) {
+        this.playersTeam1[8].moveDown()
+        this.playersTeam1[9].moveDown()
+        this.playersTeam1[10].moveDown()
+    }
+    //FW -Team2 UP=Y Down=H
+    if(this.pressedKeys[78]){
+        this.playersTeam2[2].shootOn()
+        this.playersTeam2[1].shootOn()
+        this.playersTeam2[0].shootOn()
+    }
+
+    if (this.pressedKeys[89] && this.playersTeam2[0].y>50) {
+        this.playersTeam2[2].moveUp()
+        this.playersTeam2[1].moveUp()
+        this.playersTeam2[0].moveUp()
+    }
+    else if (this.pressedKeys[72] && this.playersTeam2[2].y<this.height-50) {
+        this.playersTeam2[2].moveDown()
+        this.playersTeam2[1].moveDown()
+        this.playersTeam2[0].moveDown()
+    }
 }
+
+playerKeyUpLogic(){
+
+           //GK -Team1 UP=Q Down=A Shot=Z
+        if(!this.pressedKeys[90]){
+            this.playersTeam1[0].shootOff()
+        }
+        if (!this.pressedKeys[81] || !this.pressedKeys[65]) {
+            this.playersTeam1[0].notMoving()}
+
+        //GK -Team2 UP=O Down= L Shot=.
+        if(this.pressedKeys[190]){
+            this.playersTeam2[10].shootOn()
+        }
+        else{
+            this.playersTeam2[10].shootOff()
+        }
+        if (this.pressedKeys[79] && this.playersTeam2[10].y>235) {
+            this.playersTeam2[10].moveUp()
+        }
+        else if (this.pressedKeys[76] && this.playersTeam2[10].y<this.height-235)  {
+            this.playersTeam2[10].moveDown()
+        } 
+        else{this.playersTeam2[10].notMoving()
+        }
+
+        //DF -Team1 UP=W Down= S Shot=X
+        if(this.pressedKeys[88]){
+            this.playersTeam1[1].shootOn()
+            this.playersTeam1[2].shootOn()
+        }
+        else{
+            this.playersTeam1[1].shootOff()
+            this.playersTeam1[2].shootOff()
+        }
+        if (this.pressedKeys[87] && this.playersTeam1[1].y>50) {
+            this.playersTeam1[1].moveUp()
+            this.playersTeam1[2].moveUp()
+        }
+        else if (this.pressedKeys[83] && this.playersTeam1[2].y<this.height-50) {
+            this.playersTeam1[1].moveDown()
+            this.playersTeam1[2].moveDown()
+        }    
+        else{this.playersTeam1[1].notMoving()
+            this.playersTeam1[2].notMoving()
+        }
+        //DF -Team2 UP=I Down= K
+        if(this.pressedKeys[188]){
+            this.playersTeam2[9].shootOn()
+            this.playersTeam2[8].shootOn()
+        }
+        else{
+            this.playersTeam2[9].shootOff()
+            this.playersTeam2[8].shootOff()
+        }
+        if (this.pressedKeys[73] && this.playersTeam2[8].y>50) {
+            this.playersTeam2[9].moveUp()
+            this.playersTeam2[8].moveUp()
+        }
+        else if (this.pressedKeys[75] && this.playersTeam2[9].y<this.height-50) {
+            this.playersTeam2[9].moveDown()
+            this.playersTeam2[8].moveDown()
+        }
+        else{this.playersTeam2[9].notMoving()
+            this.playersTeam2[8].notMoving()
+        }   
+        //MID -Team1 UP=E Down= D
+        if(this.pressedKeys[67]){
+            this.playersTeam1[3].shootOn()
+            this.playersTeam1[4].shootOn()
+            this.playersTeam1[5].shootOn()
+            this.playersTeam1[6].shootOn()
+            this.playersTeam1[7].shootOn()
+
+        }
+        else{
+            this.playersTeam1[3].shootOff()
+            this.playersTeam1[4].shootOff()
+            this.playersTeam1[5].shootOff()
+            this.playersTeam1[6].shootOff()
+            this.playersTeam1[7].shootOff()
+            
+        }
+        if (this.pressedKeys[69] && this.playersTeam1[3].y>50) {
+            this.playersTeam1[3].moveUp()
+            this.playersTeam1[4].moveUp()
+            this.playersTeam1[5].moveUp()
+            this.playersTeam1[6].moveUp()
+            this.playersTeam1[7].moveUp()
+        }
+        else if (this.pressedKeys[68] && this.playersTeam1[7].y<this.height-50) {
+            this.playersTeam1[3].moveDown()
+            this.playersTeam1[4].moveDown()
+            this.playersTeam1[5].moveDown()
+            this.playersTeam1[6].moveDown()
+            this.playersTeam1[7].moveDown()
+        }
+        else{this.playersTeam1[3].notMoving()
+            this.playersTeam1[4].notMoving()
+            this.playersTeam1[5].notMoving()
+            this.playersTeam1[6].notMoving()
+            this.playersTeam1[7].notMoving()
+        }
+        //MID -Team2 UP=U Down= J
+        if(this.pressedKeys[77]){
+            this.playersTeam2[7].shootOn()
+            this.playersTeam2[6].shootOn()
+            this.playersTeam2[5].shootOn()
+            this.playersTeam2[4].shootOn()
+            this.playersTeam2[3].shootOn()
+
+        }
+        else{
+            this.playersTeam2[7].shootOff()
+            this.playersTeam2[6].shootOff()
+            this.playersTeam2[5].shootOff()
+            this.playersTeam2[4].shootOff()
+            this.playersTeam2[3].shootOff()
+            
+        }
+        if (this.pressedKeys[85] && this.playersTeam2[3].y>50) {
+            this.playersTeam2[7].moveUp()
+            this.playersTeam2[6].moveUp()
+            this.playersTeam2[5].moveUp()
+            this.playersTeam2[4].moveUp()
+            this.playersTeam2[3].moveUp()
+        }
+        else if (this.pressedKeys[74] && this.playersTeam2[7].y<this.height-50) {
+            this.playersTeam2[7].moveDown()
+            this.playersTeam2[6].moveDown()
+            this.playersTeam2[5].moveDown()
+            this.playersTeam2[4].moveDown()
+            this.playersTeam2[3].moveDown()
+        }
+        else{this.playersTeam2[7].notMoving()
+            this.playersTeam2[6].notMoving()
+            this.playersTeam2[5].notMoving()
+            this.playersTeam2[4].notMoving()
+            this.playersTeam2[3].notMoving()
+        }
+        //FW -Team1 UP=R Down=F
+        if(this.pressedKeys[86]){
+            this.playersTeam1[8].shootOn()
+            this.playersTeam1[9].shootOn()
+            this.playersTeam1[10].shootOn()
+        }
+        else{
+            this.playersTeam1[8].shootOff()
+            this.playersTeam1[9].shootOff()
+            this.playersTeam1[10].shootOff()
+        }
+        if (this.pressedKeys[82] && this.playersTeam1[8].y>50) {
+            this.playersTeam1[8].moveUp()
+            this.playersTeam1[9].moveUp()
+            this.playersTeam1[10].moveUp()
+        }
+        else if (this.pressedKeys[70] && this.playersTeam1[10].y<this.height-50) {
+            this.playersTeam1[8].moveDown()
+            this.playersTeam1[9].moveDown()
+            this.playersTeam1[10].moveDown()
+        }
+        else{this.playersTeam1[8].notMoving()
+            this.playersTeam1[9].notMoving()
+            this.playersTeam1[10].notMoving()
+        }
+        //FW -Team2 UP=Y Down=H
+        if(this.pressedKeys[78]){
+            this.playersTeam2[2].shootOn()
+            this.playersTeam2[1].shootOn()
+            this.playersTeam2[0].shootOn()
+        }
+        else{
+            this.playersTeam2[2].shootOff()
+            this.playersTeam2[1].shootOff()
+            this.playersTeam2[0].shootOff()
+        }
+        if (this.pressedKeys[89] && this.playersTeam2[0].y>50) {
+            this.playersTeam2[2].moveUp()
+            this.playersTeam2[1].moveUp()
+            this.playersTeam2[0].moveUp()
+        }
+        else if (this.pressedKeys[72] && this.playersTeam2[2].y<this.height-50) {
+            this.playersTeam2[2].moveDown()
+            this.playersTeam2[1].moveDown()
+            this.playersTeam2[0].moveDown()
+        }
+        else{this.playersTeam2[2].notMoving()
+            this.playersTeam2[1].notMoving()
+            this.playersTeam2[0].notMoving()
+        }
+}
+
+}
+
