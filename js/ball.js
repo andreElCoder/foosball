@@ -20,8 +20,8 @@ displayBall(){
 throughBall(){
     this.x= 90+game.width/2 
     this.y= 250
-    this.speedX= 2
-    this.speedY= 5 
+    this.speedX= 5
+    this.speedY= 0 
 }
 updateBall(){
     this.x+=this.speedX;

@@ -5,9 +5,35 @@ class Player{
         this.x = x
         this.y = y
         this.speedY = 0
-        this.shoot = false
+        this.shootDisplay = false
+        this.shootTrigger = false
     }
-
+    moveUp() {
+        this.speedY = -2
+    }
+    moveDown() {
+        this.speedY = 2
+    }
+    notMoving() {
+        this.speedY = 0
+    }
+    updatePlayer(){
+        this.y+=this.speedY;
+    }
+    shootOn(){
+        //clearTimeout(this.timmerShot)
+        this.shootDisplay=true
+        //console.log("shotON")
+    }
+    shootOff(){
+        this.shootDisplay=false
+        this.shootTrigger = true
+        setTimeout(function() {
+            console.log("Shot off called on ")
+            this.shootTrigger=false
+        }, 500);
+        
+    }
 displayPlayer(){
     this.ctx.save()
     this.ctx.beginPath()
@@ -246,43 +272,58 @@ displayHorizontallyRight(){
     this.ctx.restore()
 }
 
-moveUp() {
-    this.speedY = -4
-}
-moveDown() {
-    this.speedY = 4
-}
-notMoving() {
-    this.speedY = 0
-}
-updatePlayer(){
-    this.y+=this.speedY;
-}
-shootOn(){
-    this.shoot=true
-}
-shootOff(){
-    this.shoot=false
-}
 checkTouchBall(ball){ 
 //Ball radius is 5 ( also added as tolerance/interval or this condition eg: ball.x===this-x almost never happen)
 //  <ball.x<
-    if(ball.x+5 < this.x-5 && ball.x+15>this.x-5 && ball.y >this.y-10 && ball.y<this.y+10 && ball.speedX>0 && this.shoot ===false){// Ball touch left side of player
+    if(ball.x+5 < this.x-5 && ball.x+15>this.x-5 && ball.y >this.y-10 && ball.y<this.y+10 && ball.speedX>0 && this.shootDisplay ===false){// Ball touch left side of player
         console.log("Ball touch left side of player")
-        ball.speedX=-ball.speedX
+        console.log(this.shootTrigger)
+        if(this.shootTrigger){ball.speedX=-ball.speedX*2}
+        else{ball.speedX=-ball.speedX}
+        
     }  
-    if(ball.x-10 < this.x+5 && ball.x>this.x+5  &&  ball.y >this.y-10 && ball.y<this.y+10&& ball.speedX<0 && this.shoot ===false){ // Ball touch rigth side of player
+    if(ball.x-10 < this.x+5 && ball.x>this.x+5  &&  ball.y >this.y-10 && ball.y<this.y+10&& ball.speedX<0 && this.shootDisplay ===false){ // Ball touch rigth side of player
         console.log("Ball touch right side of player")
-        ball.speedX=-ball.speedX
+        console.log(this.shootTrigger)
+        if(this.shootTrigger){ball.speedX=-ball.speedX*2}
+        else{ball.speedX=-ball.speedX}
     }
-    if(ball.y+5 < this.y-5 && ball.y+15 > this.y-5 && ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY>0 &&this.shoot ===false){ // Ball touch upper side of player
+    if(ball.y+5 < this.y-5 && ball.y+15 > this.y-5 && ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY>0 &&this.shootDisplay ===false){ // Ball touch upper side of player
         console.log("Ball touch upper side of player")
         ball.speedY=-ball.speedY
     }
-    if(ball.y-10 < this.y+5 && ball.y>this.y+5  &&  ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY<0 &&this.shoot ===false){ // Ball touch bottom side of player
+    if(ball.y-10 < this.y+5 && ball.y>this.y+5  &&  ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY<0 &&this.shootDisplay ===false){ // Ball touch bottom side of player
         console.log("Ball touch bottom side of player")
         ball.speedY=-ball.speedY
     }
 }
 
 }
+
+/*
+checkTouchBall(ball,shootTrigger){ 
+//Ball radius is 5 ( also added as tolerance/interval or this condition eg: ball.x===this-x almost never happen)
+//  <ball.x<
+    if(!shootTrigger){ // Shoot not trigerred just regular touch between ball and player
+        if(ball.x+5 < this.x-5 && ball.x+15>this.x-5 && ball.y >this.y-10 && ball.y<this.y+10 && ball.speedX>0 && this.shoot ===false){// Ball touch left side of player
+            console.log("Ball touch left side of player")
+            ball.speedX=-ball.speedX
+        }  
+        if(ball.x-10 < this.x+5 && ball.x>this.x+5  &&  ball.y >this.y-10 && ball.y<this.y+10&& ball.speedX<0 && this.shoot ===false){ // Ball touch rigth side of player
+            console.log("Ball touch right side of player")
+            ball.speedX=-ball.speedX
+        }
+        if(ball.y+5 < this.y-5 && ball.y+15 > this.y-5 && ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY>0 &&this.shoot ===false){ // Ball touch upper side of player
+            console.log("Ball touch upper side of player")
+            ball.speedY=-ball.speedY
+        }
+        if(ball.y-10 < this.y+5 && ball.y>this.y+5  &&  ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY<0 &&this.shoot ===false){ // Ball touch bottom side of player
+            console.log("Ball touch bottom side of player")
+         ball.speedY=-ball.speedY
+    }
+    }
+    else{} // Shoot trigerred
+}
+
+}
+*/
