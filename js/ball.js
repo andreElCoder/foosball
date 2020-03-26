@@ -19,8 +19,8 @@ displayBall(){
 }
 throughBall(){
     this.x= 90+game.width/2 
-    this.y= 250
-    this.speedX= 5
+    this.y= 120
+    this.speedX= 3
     this.speedY= 0 
 }
 updateBall(){

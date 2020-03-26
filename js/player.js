@@ -28,11 +28,15 @@ class Player{
     shootOff(){
         this.shootDisplay=false
         this.shootTrigger = true
+        var me = this;
+        console.log("shooOff called")
         setTimeout(function() {
-            console.log("Shot off called on ")
-            this.shootTrigger=false
-        }, 500);
-        
+            console.log("Shot off called on from timeout change to false ")
+            me.shootTrigger=false
+            console.log(me.shootTrigger)   
+        }, 500
+        );
+        console.log(this.shootTrigger)
     }
 displayPlayer(){
     this.ctx.save()
@@ -272,29 +276,44 @@ displayHorizontallyRight(){
     this.ctx.restore()
 }
 
-checkTouchBall(ball){ 
-//Ball radius is 5 ( also added as tolerance/interval or this condition eg: ball.x===this-x almost never happen)
+checkTouchBall(){ 
+//Ball radius is 5 ( also added as tolerance/interval or this condition eg: ball.x===this-x  never happens)
 //  <ball.x<
-    if(ball.x+5 < this.x-5 && ball.x+15>this.x-5 && ball.y >this.y-10 && ball.y<this.y+10 && ball.speedX>0 && this.shootDisplay ===false){// Ball touch left side of player
-        console.log("Ball touch left side of player")
+    if(this.game.ball.x+5 < this.x-5 && this.game.ball.x+15>this.x-5 && this.game.ball.y >this.y-10 && this.game.ball.y<this.y+10 && this.game.ball.speedX>0 && this.shootDisplay ===false){// this.game.Ball touch left side of player
+        console.log("this.game.Ball touch left side of player")
         console.log(this.shootTrigger)
-        if(this.shootTrigger){ball.speedX=-ball.speedX*2}
-        else{ball.speedX=-ball.speedX}
+        if(this.shootTrigger && this.game.ball.speedX>0){                   // Left side , player from team2
+            this.game.ball.speedX=-this.game.ball.speedX*2; console.log("Left side , player from team2")
+            this.game.ball.speedY=(this.game.ball.speedY*(this.y-this.game.ball.y)*1.5)
+        }
+        else if(this.shootTrigger && this.game.ball.speedX<0){              // Left side , player from team1 ( meter team a que pertence para fazer o remate, cuidado ao verificar o shoot outra vez)
+            this.game.ball.speedX=this.game.ball.speedX*2;console.log("Left side , player from team1")
+            this.game.ball.speedY=(this.game.ball.speedY*(this.y-this.game.ball.y)*1.5)
+        }
+        else{this.game.ball.speedX=-this.game.ball.speedX}                  // No shot, like a regular obstacule
         
     }  
-    if(ball.x-10 < this.x+5 && ball.x>this.x+5  &&  ball.y >this.y-10 && ball.y<this.y+10&& ball.speedX<0 && this.shootDisplay ===false){ // Ball touch rigth side of player
-        console.log("Ball touch right side of player")
+    if(this.game.ball.x-10 < this.x+5 && this.game.ball.x>this.x+5  &&  this.game.ball.y >this.y-10 && this.game.ball.y<this.y+10&& this.game.ball.speedX<0 && this.shootDisplay ===false){ // this.game.Ball touch rigth side of player
+        console.log("this.game.Ball touch right side of player")
         console.log(this.shootTrigger)
-        if(this.shootTrigger){ball.speedX=-ball.speedX*2}
-        else{ball.speedX=-ball.speedX}
+        
+        if(this.shootTrigger && this.game.ball.speedX<0){                   // Right side, player from team1
+            this.game.ball.speedX=-this.game.ball.speedX*2;console.log( "Right side, player from team1")
+            this.game.ball.speedY=(this.game.ball.speedY*(this.y-this.game.ball.y)*1.5)
+        }
+        else if(this.shootTrigger && this.game.ball.speedX>0){              // Right side, player from team2
+            this.game.ball.speedX=-this.game.ball.speedX*2;console.log( "Right side, player from team2")
+            this.game.ball.speedY=(this.game.ball.speedY*(this.y-this.game.ball.y)*1.5)
+        }
+        else{this.game.ball.speedX=-this.game.ball.speedX}                  // No shot, like a regular obstacule
     }
-    if(ball.y+5 < this.y-5 && ball.y+15 > this.y-5 && ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY>0 &&this.shootDisplay ===false){ // Ball touch upper side of player
-        console.log("Ball touch upper side of player")
-        ball.speedY=-ball.speedY
+    if(this.game.ball.y+5 < this.y-5 && this.game.ball.y+15 > this.y-5 && this.game.ball.x >this.x-10 && this.game.ball.x<this.x+10 && this.game.ball.speedY>0 &&this.shootDisplay ===false){ // this.game.Ball touch upper side of player
+        console.log("this.game.Ball touch upper side of player")
+        this.game.ball.speedY=-this.game.ball.speedY
     }
-    if(ball.y-10 < this.y+5 && ball.y>this.y+5  &&  ball.x >this.x-10 && ball.x<this.x+10 && ball.speedY<0 &&this.shootDisplay ===false){ // Ball touch bottom side of player
-        console.log("Ball touch bottom side of player")
-        ball.speedY=-ball.speedY
+    if(this.game.ball.y-10 < this.y+5 && this.game.ball.y>this.y+5  &&  this.game.ball.x >this.x-10 && this.game.ball.x<this.x+10 && this.game.ball.speedY<0 &&this.shootDisplay ===false){ // this.game.Ball touch bottom side of player
+        console.log("this.game.Ball touch bottom side of player")
+        this.game.ball.speedY=-this.game.ball.speedY
     }
 }
 
