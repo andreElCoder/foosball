@@ -12,17 +12,42 @@ class Game {
     this.animationId;
     this.pressedKeysUp= {}
     this.pressedKeysDown= {}    
-    this.keysPressed();   
+    this.keysPressed();
+    this.gameStatus="game"   
     }
-
+start() {
+    if (this.gameStatus === "game") {
+        this.createTeams();
+        this.ball.throughBall();
+        this.updateGame()
+        }
+      }
 updateGame(){
     this.animationId = window.requestAnimationFrame(() => {
+        if (this.gameStatus === "game") {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.field.displayField();
         this.displayTeams()
         this.displayBall()
-        //this.movePlayers()
         this.updateGame()
+        } 
+        if (this.gameStatus === "game-over") {
+            window.cancelAnimationFrame(this.animationId);
+            const btn = document.createElement("BUTTON");
+            btn.innerHTML = "Play Again";
+            btn.setAttribute("id","play-again")
+            //this.$canvas.outerHTML=""
+            document.getElementById("menu").appendChild(btn)
+            btn.addEventListener("click",()=>{
+                this.gameStatus = "game"
+                btn.outerHTML=""
+                this.score.restartScore()
+                this.score.updateScore()
+                this.ball.throughBall()
+                this.updateGame()
+                
+            })            
+        }
     })
 }
 createTeams(){
@@ -80,20 +105,25 @@ displayTeams(){
 }
 displayBall(){
     this.checkBallOnBoundaries()
+    this.ball.friction()
     this.ball.updateBall()
     this.ball.displayBall()
 }
 
 checkBallOnBoundaries(){
     if(this.ball.x<60 && this.ball.y>235 && this.ball.y<this.height-235){               //Goal area 1
-        this.ball.throughBall();
+        this.ball.throughBall()
         this.score.goalTeam1()
-        this.score.updateScore()                                                      
+        //this.score.updateScore()
+        if(this.score.gameOver())
+        this.gameStatus ="game-over"                                                      
     }
     else if(this.ball.x> this.width-60 && this.ball.y>235 && this.ball.y<this.height-235){  //Goal area 2
-        this.ball.throughBall();
+        this.ball.throughBall()
         this.score.goalTeam2()                                                        
-        this.score.updateScore()
+        //this.score.updateScore()
+        if(this.score.gameOver())
+        this.gameStatus ="game-over"
     }
     else if(this.ball.x<60 || this.ball.x > this.width-60) this.ball.speedX=-this.ball.speedX
     else if(this.ball.y<60 || this.ball.y > this.height-60) this.ball.speedY=-this.ball.speedY
@@ -158,8 +188,6 @@ keysPressed(){
         }
     })
 }
-
-
 
 playerKeyDownLogic(){
     console.log("Down")

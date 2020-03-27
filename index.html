@@ -7,22 +7,126 @@
     <title>Foosball</title>
 </head>
 <body>
-    <div>
-        <canvas id ="canvas" width="1400" height="650"></canvas>
+  <div id="menu">
+    <button id = "start-button">
+      Play Foosball
+    </button>
+    <div id= "teams">
+    <div id = "team-info">
+  <h1>Team1</h1>
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Functionality</th>
+  </tr>
+  <tr>
+    <td>Q</td>
+    <td>Move Goalkeeper up</td>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td>Move Goalkeeper down</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>Goalkeeper Horizontally positioned</td>
+  </tr>
+  <tr>
+    <td>W</td>
+    <td>Move Defenders up</td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>Move Defenders down</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Defenders Horizontally positioned</td>
+  </tr>  
+  <tr>
+    <td>E</td>
+    <td>Move Midfielders up</td>
+  </tr>
+  <tr>
+    <td>D</td>
+    <td>Move Midfielders down</td>
+  </tr>
+  <tr>
+    <td>C</td>
+    <td>Midfielders Horizontally positioned</td>
+  </tr>  <tr>
+    <td>R</td>
+    <td>Move Strikers up</td>
+  </tr>
+  <tr>
+    <td>F</td>
+    <td>Move Strikers down</td>
+  </tr>
+  <tr>
+    <td>V</td>
+    <td>Strikers Horizontally positioned</td>
+  </tr>
+</table>
     </div>
     <div>
-        <h1>Score</h1>
-        <table>
-            <tr>
-              <th>Team1</th>
-              <th>Team2</th>
-            </tr>
-            <tr id="score">
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </table>
-    </div>
+<h1>Team2</h1>
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Functionality</th>
+  </tr>
+  <tr>
+    <td>O</td>
+    <td>Move Goalkeeper up</td>
+  </tr>
+  <tr>
+    <td>L</td>
+    <td>Move Goalkeeper down</td>
+  </tr>
+  <tr>
+    <td>.</td>
+    <td>Goalkeeper Horizontally positioned</td>
+  </tr>
+  <tr>
+    <td>I</td>
+    <td>Move Defenders up</td>
+  </tr>
+  <tr>
+    <td>K</td>
+    <td>Move Defenders down</td>
+  </tr>
+  <tr>
+    <td>,</td>
+    <td>Defenders Horizontally positioned</td>
+  </tr>  
+  <tr>
+    <td>U</td>
+    <td>Move Midfielders up</td>
+  </tr>
+  <tr>
+    <td>J</td>
+    <td>Move Midfielders down</td>
+  </tr>
+  <tr>
+    <td>M</td>
+    <td>Midfielders Horizontally positioned</td>
+  </tr>  <tr>
+    <td>Y</td>
+    <td>Move Strikers up</td>
+  </tr>
+  <tr>
+    <td>H</td>
+    <td>Move Strikers down</td>
+  </tr>
+  <tr>
+    <td>N</td>
+    <td>Strikers Horizontally positioned</td>
+  </tr>
+</table>
+</div>
+</div>
+</div>
+    
 <script src ="js/score.js"></script>
 <script src ="js/field.js"></script>
 <script src ="js/ball.js"></script>

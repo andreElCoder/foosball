@@ -1,3 +1,79 @@
-canvas{
- border: 1em solid rgb(58, 40, 1);
+#menu{
+    position: relative;
+}
+#teams{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+#play-again{
+    background-color: rgb(50, 206, 150);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 280px 0 0 -133px;
+}
+#start-button{
+    background-color: rgb(50, 206, 150);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0px 0 0 -80px;
+}
+#canvas{
+    border: 1em solid rgb(58, 40, 1);
+    width: 1400px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -800px;
+}
+#team1{
+font-size: 5rem;
+position: absolute;
+z-index: 1;
+top: 50%;
+left: 50%;
+margin: 280px 0 0 -470px;
+width:100px; 
+height:20px; 
+
+}
+#team2{
+    font-size: 5rem;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    margin: 280px 0 0 250px;
+    width:100px; 
+    height:20px;   
 }
