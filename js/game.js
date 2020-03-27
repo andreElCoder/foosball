@@ -134,7 +134,7 @@ checkPlayerOnBoundaries(){
     if (this.playersTeam1[0].y<=235 || this.playersTeam1[0].y>this.height-235) {
         this.playersTeam1[0].notMoving()
     }
-    if (this.playersTeam1[10].y<=235 || this.playersTeam1[10].y>this.height-235) {
+    if (this.playersTeam2[10].y<=235 || this.playersTeam2[10].y>this.height-235) {
         this.playersTeam2[10].notMoving()
     }
    
@@ -215,7 +215,7 @@ playerKeyDownLogic(){
     
     if (this.pressedKeysDown[79] && this.playersTeam2[10].y>235) {
         this.playersTeam2[10].moveUp()
-        this.pressedKeysDown[75]=false
+        this.pressedKeysDown[79]=false
     }
     else if (this.pressedKeysDown[76] && this.playersTeam2[10].y<this.height-235){
         this.playersTeam2[10].moveDown()
@@ -374,6 +374,7 @@ playerKeyUpLogic(){
         if (this.pressedKeysUp[79] ||this.pressedKeysUp[76])  {
             this.playersTeam2[10].notMoving()
             this.pressedKeysUp[79]=false
+            this.pressedKeysUp[76]=false
         }
         console.log("3")
         //DF -Team1 UP=W Down= S Shot=X
