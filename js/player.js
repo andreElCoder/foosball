@@ -284,11 +284,11 @@ checkTouchBall(){
         console.log(this.shootTrigger)
         if(this.shootTrigger && this.game.ball.speedX>0){                   // Left side , player from team2
             this.game.ball.speedX=-this.game.ball.speedX*4; console.log("Left side , player from team2")
-            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(1)-1)
+            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(2)-2)
         }
         else if(this.shootTrigger && this.game.ball.speedX<0){              // Left side , player from team1 ( meter team a que pertence para fazer o remate, cuidado ao verificar o shoot outra vez)
             this.game.ball.speedX=this.game.ball.speedX*4;console.log("Left side , player from team1")
-            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(1)-1)   
+            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(2)-2)   
         }
         else{this.game.ball.speedX=-this.game.ball.speedX}                  // No shot, like a regular obstacule
         
@@ -299,11 +299,11 @@ checkTouchBall(){
         
         if(this.shootTrigger && this.game.ball.speedX<0){                   // Right side, player from team1
             this.game.ball.speedX=-this.game.ball.speedX*4;console.log( "Right side, player from team1")
-            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(1)-1)   
+            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(2)-2)   
         }
         else if(this.shootTrigger && this.game.ball.speedX>0){              // Right side, player from team2
             this.game.ball.speedX=-this.game.ball.speedX*4;console.log( "Right side, player from team2")
-            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(1)-1)   
+            this.game.ball.speedY=(this.game.ball.speedY)*(Math.random(2)-2)   
         }
         else{this.game.ball.speedX=-this.game.ball.speedX}                  // No shot, like a regular obstacule
     }

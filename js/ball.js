@@ -35,10 +35,10 @@ updateBall(){
 friction(){
     console.log(this.speedY)
     if(this.speedY>0)
-    this.speedY-=0.00001
-    else{this.speedY+=0.00001}
+    this.speedY-=0.0001
+    else{this.speedY+=0.0001}
     if(this.speedX>0)
-    this.speedX-=0.00001
-    else{this.speedX+=0.00001}
+    this.speedX-=0.0001
+    else{this.speedX+=0.0001}
 }
 }
